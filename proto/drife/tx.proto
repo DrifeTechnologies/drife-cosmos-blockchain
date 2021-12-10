@@ -1,0 +1,42 @@
+syntax = "proto3";
+package example.drife.drife;
+
+// this line is used by starport scaffolding # proto/tx/import
+import "drife/counterquote.proto";
+
+option go_package = "github.com/example/drife/x/drife/types";
+
+// Msg defines the Msg service.
+service Msg {
+    // this line is used by starport scaffolding # proto/tx/rpc
+  rpc CreateCounterquote(MsgCreateCounterquote) returns (MsgCreateCounterquoteResponse);
+  rpc UpdateCounterquote(MsgUpdateCounterquote) returns (MsgUpdateCounterquoteResponse);
+  rpc DeleteCounterquote(MsgDeleteCounterquote) returns (MsgDeleteCounterquoteResponse);
+}
+
+// this line is used by starport scaffolding # proto/tx/message
+message MsgCreateCounterquote {
+  string creator = 1;
+  int64 premiumPercent = 2;
+  int64 rideId = 3;
+}
+
+message MsgCreateCounterquoteResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateCounterquote {
+  string creator = 1;
+  uint64 id = 2;
+  int64 premiumPercent = 3;
+  int64 rideId = 4;
+}
+
+message MsgUpdateCounterquoteResponse { }
+
+message MsgDeleteCounterquote {
+  string creator = 1;
+  uint64 id = 2;
+}
+
+message MsgDeleteCounterquoteResponse { }

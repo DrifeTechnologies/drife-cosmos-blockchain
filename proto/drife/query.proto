@@ -1,0 +1,69 @@
+syntax = "proto3";
+package example.drife.drife;
+
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "drife/ride.proto";
+// this line is used by starport scaffolding # 1
+import "drife/counterquote.proto";
+
+option go_package = "github.com/example/drife/x/drife/types";
+
+// Query defines the gRPC querier service.
+// Query defines the gRPC querier service.
+service Query {
+	// this line is used by starport scaffolding # 2
+
+	// Queries a counterquote by id.
+	rpc Counterquote(QueryGetCounterquoteRequest) returns (QueryGetCounterquoteResponse) {
+		option (google.api.http).get = "/example/drife/drife/counterquote/{id}";
+	}
+
+	// Queries a list of counterquote items.
+	rpc CounterquoteAll(QueryAllCounterquoteRequest) returns (QueryAllCounterquoteResponse) {
+		option (google.api.http).get = "/example/drife/drife/counterquote";
+	}
+
+	rpc Ride(QueryGetRideRequest) returns (QueryGetRideResponse) {
+		option (google.api.http).get = "/example/drife/drife/ride/{id}";
+	}
+	rpc RideAll(QueryAllRideRequest) returns (QueryAllRideResponse) {
+		option (google.api.http).get = "/example/drife/drife/ride";
+	}
+}
+
+// this line is used by starport scaffolding # 3
+message QueryGetCounterquoteRequest {
+	uint64 id = 1;
+}
+
+message QueryGetCounterquoteResponse {
+	Counterquote Counterquote = 1;
+}
+
+message QueryAllCounterquoteRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllCounterquoteResponse {
+	repeated Counterquote Counterquote = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+message QueryGetRideRequest {
+	string id = 1;
+}
+
+message QueryGetRideResponse {
+	Ride Ride = 1;
+}
+
+message QueryAllRideRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllRideResponse {
+	repeated Ride Ride = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+// this line is used by starport scaffolding # 3

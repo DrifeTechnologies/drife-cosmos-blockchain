@@ -1,0 +1,60 @@
+// proto/blog/post.proto
+syntax = "proto3";
+package example.drife.drife;
+
+option go_package = "github.com/example/drife/x/drife/types";
+
+import "gogoproto/gogo.proto";
+
+message cQ {
+  string driver = 1;
+  int64 premiumPercent = 2;
+} 
+
+message Ride {
+  string rider = 1;
+  string rideId = 2;
+  string driver = 3; 
+  repeated string eligibleDrivers = 4; 
+  int64 initialTime = 5;
+  int64 initialDistance = 6;
+  int64 finalTime = 7;
+  int64 finalDistance = 8;
+  int64 boostPercent = 9;
+  repeated cQ counterquotes = 10;
+  int64 baseFare = 11;
+  int64 estimatedFare = 12;
+  int64 finalFare = 13; 
+  int64 rideState = 14;  
+  int64 chosenPremiumPercent = 15;
+  map<string, int64> cq = 16;
+}
+
+message MsgCreateRide {
+  string rider = 1;
+  int64 initialTime = 2; 
+  int64 initialDistance = 3; 
+  int64 boostPercent = 4;
+  repeated string eligibleDrivers = 5;
+  int64 rideState = 6;
+}
+
+message MsgCounterQuote {
+  string driver = 1;
+  int64 rideId = 2;
+  int64 premiumPercent = 3;
+}
+
+message MsgAcceptRide {
+  string rider = 1;
+  int64 rideId = 2;
+  string driver = 3;
+}
+
+message MsgEndRide {
+  string rider = 1;
+  int64 rideId = 2;
+  int64 finalTime = 3;
+  int64 finalDistance = 4;
+}
+

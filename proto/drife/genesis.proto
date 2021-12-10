@@ -1,0 +1,15 @@
+syntax = "proto3";
+package example.drife.drife;
+
+// this line is used by starport scaffolding # genesis/proto/import
+import "drife/counterquote.proto";
+
+option go_package = "github.com/example/drife/x/drife/types";
+
+// GenesisState defines the drife module's genesis state.
+message GenesisState {
+    // this line is used by starport scaffolding # genesis/proto/state
+		repeated Counterquote counterquoteList = 1; // this line is used by starport scaffolding # genesis/proto/stateField
+		uint64 counterquoteCount = 2; // this line is used by starport scaffolding # genesis/proto/stateField
+    // this line is used by starport scaffolding # ibc/genesis/proto
+}
